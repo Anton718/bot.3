@@ -8,4 +8,7 @@ const sleep = require("sleep")
 const calendar = require("./controllers/calendar")
 
 bot.start(calendar.cal)
+bot.hears("hey", (ctx) => {
+    ctx.reply("hey")
+})
 bot.launch();
