@@ -11,4 +11,8 @@ bot.start(calendar.cal)
 bot.hears("hey", (ctx) => {
     ctx.reply("hey")
 })
+bot.hears("hi", (ctx) => {
+    ctx.reply("hi")
+})
+
 bot.launch();
