@@ -5,23 +5,23 @@ const bot = new Telegraf(process.env.TOKEN);
 const https = require("https")
 const fs = require("fs")
 const sleep = require("sleep")
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const { key_days } = require("./assets/keyboards")
-const currentDate = new Date();
-const year = currentDate.getFullYear();
-const month = months[currentDate.getMonth()];
-const month_int = new Date().getMonth();
-const day = days[currentDate.getDay()];
-const day_int = currentDate.getDay()
-const monthDays = new Date(year, month_int, 0).getDate();
+const {months,
+    days,
+    currentDate,
+    year,
+    month,
+    month_int,
+    day,
+    day_int,
+    monthDays} = require("./assets/assets")
 
 
 bot.hears('hi', async (ctx) => {
     ctx.sendMessage(`Today: ${month} ${day_int}, ${year}`, key_days)
 })
 
-bot.hears("hi", (ctx) => {
+bot.hears("hello", (ctx) => {
     ctx.reply("hi man")
 })
 

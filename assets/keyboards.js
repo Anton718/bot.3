@@ -8,13 +8,6 @@ const day = days[currentDate.getDay()];
 const day_int = currentDate.getDay()
 const monthDays = new Date(year, month_int, 0).getDate();
 
-// const timeData = {
-//  year: year,
-//  month: month,
-//  day: day,
-//  monthDays: monthDays
-// }
-
 let arrMonthDays = []
 let finalMonthDays = []
 
