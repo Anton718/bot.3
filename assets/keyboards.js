@@ -15,26 +15,25 @@ const timeData = {
  monthDays: monthDays
 }
 let arrMonthDays = []
-let arrWeekDays = []
-function getMonthCal() {
+let finalMonthDays = []
+
   for (let i = 1; i <= monthDays+1; i++) {
-    while (arrWeekDays.length < 7) {
-      arrWeekDays.push(i)
-    }
       arrMonthDays.push( { text: i, callback_data: i } );
   }
-  console.log(arrWeekDays);
-  console.log(arrMonthDays);
-  return JSON.stringify(arrMonthDays)
-}
-getMonthCal()
 
+    while (arrMonthDays.length !== 0) {
+      const week = arrMonthDays.slice(0, 7);
+      finalMonthDays.push(week);
+      for (let i = 0; i < 7; i++) {
+        arrMonthDays.shift();
+      }
+    }
+ 
 const key_days = {
   reply_markup: {
     inline_keyboard:
-    [arrMonthDays]
+    finalMonthDays
    }
 }
-
 
 module.exports = { key_days };
