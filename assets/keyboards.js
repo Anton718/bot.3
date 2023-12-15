@@ -1,12 +1,12 @@
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const currentDate = new Date();
-const year = currentDate.getFullYear();
-const month = months[currentDate.getMonth()];
-const month_int = new Date().getMonth();
-const day = days[currentDate.getDay()];
-const day_int = currentDate.getDay()
-const monthDays = new Date(year, month_int, 0).getDate();
+const {months,
+  days,
+  currentDate,
+  year,
+  month,
+  month_int,
+  day,
+  day_int,
+  monthDays} = require("./assets")
 
 let arrMonthDays = []
 let finalMonthDays = []

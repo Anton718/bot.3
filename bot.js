@@ -6,15 +6,7 @@ const https = require("https")
 const fs = require("fs")
 const sleep = require("sleep")
 const { key_days } = require("./assets/keyboards")
-const {months,
-    days,
-    currentDate,
-    year,
-    month,
-    month_int,
-    day,
-    day_int,
-    monthDays} = require("./assets/assets")
+const  {year, month, day_int } = require("./assets/assets")
 
 
 bot.hears('hi', async (ctx) => {
