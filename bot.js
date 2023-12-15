@@ -6,11 +6,11 @@ const https = require("https")
 const fs = require("fs")
 const sleep = require("sleep")
 const { key_days } = require("./assets/keyboards")
-const  {year, month, day_int } = require("./assets/assets")
+const  { year, month } = require("./assets/assets")
 
 
 bot.hears('hi', async (ctx) => {
-    ctx.sendMessage(`Today: ${month} ${day_int}, ${year}`, key_days)
+    ctx.sendMessage(`${month} ${year}`, key_days)
 })
 
 bot.hears("hello", (ctx) => {
