@@ -1,12 +1,4 @@
-const {months,
-  days,
-  currentDate,
-  year,
-  month,
-  month_int,
-  day,
-  day_int,
-  day_num,
+const {day_num,
   monthDays} = require("./assets")
 
 let arrMonthDays = []
@@ -33,4 +25,17 @@ const key_days = {
    }
 }
 
-module.exports = { key_days };
+let dayHours = []
+
+for (let i = 10; i <= 20; i++) {
+  dayHours.push( [{ text: `${i}:00`, callback_data: `${i}:00` }] )
+}
+
+const key_hours = {
+  reply_markup: {
+    inline_keyboard:
+    dayHours
+  }
+}
+
+module.exports = { key_days, key_hours };
