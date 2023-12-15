@@ -7,15 +7,51 @@ exports.callbacks = (ctx) => {
     const appointment = {
         user: ctx.update.callback_query.from.username,
     }
-
+    const obj = fs.readFileSync("./assets/users.json", "utf-8")
+        if (obj) {
+            const data = JSON.parse(obj);
+            let checker = []
+            for (let i of data) {
+                checker.push(i.user)
+            }
+            if (!checker.includes(appointment.user)) {
+                data.push(appointment)
+                fs.writeFileSync("./assets/users.json", JSON.stringify(data))
+            }
+        }
 
     Number(res) !== 0 && res.slice(-2) !== "00"?
-    ( appointment.date = `${month}, ${res}`,  ctx.reply(`${month}, ${res}`, key_hours)): 
-    res.slice(-2) === "00"? (appointment.hour = res, fs.writeFileSync('./assets/users.json', JSON.stringify(appointment)), 
-    ctx.reply(`Booked for ${res}`)):null
-}
+    (getDate(res), ctx.reply(`${month}, ${res}`, key_hours)): 
+    res.slice(-2) === "00"? (getTime(res), ctx.reply(`Booked for ${res}`)) : null
 
+    function getDate(date) {
+        const obj = fs.readFileSync("./assets/users.json", "utf-8")
+        if (obj) {
+            const data = JSON.parse(obj);
+            for (let i of data) {
+                if (i.user === appointment.user) {
+                    i.date = date;
+                } 
+                fs.writeFileSync("./assets/users.json", JSON.stringify(data))
+            }
+        } else {
+            const arr = [];
+            appointment.date = date
+            arr.push(appointment)
+            fs.writeFileSync("./assets/users.json", JSON.stringify(arr))
+        }
+    }
 
-function appendToFile() {
-    const obj = fs.readFileSync("./assets")
+    function getTime(time) {
+        const obj = fs.readFileSync("./assets/users.json", "utf-8")
+        if (obj) {
+            const data = JSON.parse(obj);
+            for (let i of data) {
+                if (i.user === appointment.user) {
+                    i.hour = time;
+                }
+                fs.writeFileSync("./assets/users.json", JSON.stringify(data))
+            }
+        } 
+    }
 }

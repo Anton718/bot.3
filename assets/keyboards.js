@@ -1,13 +1,12 @@
-const {day_num,
-  monthDays} = require("./assets")
+const {day_num, monthDays} = require("./assets")
 
 let arrMonthDays = []
 let finalMonthDays = []
 
   for (let i = 1; i <= monthDays+1; i++) {
     i <= day_num?
-      arrMonthDays.push( { text: ".", callback_data: 0 } ):
-      arrMonthDays.push( { text: i, callback_data: i } );
+      arrMonthDays.push( { text: "." , callback_data: 0 } ):
+      arrMonthDays.push( { text: i , callback_data: i } );
   }
 
     while (arrMonthDays.length !== 0) {
