@@ -18,6 +18,10 @@ exports.callbacks = (ctx) => {
                 data.push(appointment)
                 fs.writeFileSync("./assets/users.json", JSON.stringify(data))
             }
+        } else {
+            const data = []
+            data.push(appointment)
+            fs.writeFileSync("./assets/users.json", JSON.stringify(data))
         }
 
     Number(res) !== 0 && res.slice(-2) !== "00"?
@@ -43,16 +47,24 @@ exports.callbacks = (ctx) => {
     }
 
     function getTime(time) {
-        const obj = fs.readFileSync("./assets/users.json", "utf-8")
-        if (obj) {
-            const data = JSON.parse(obj);
-            for (let i of data) {
-                    if (i.user === appointment.user) {
-                        i.hour = time;
-                        ctx.reply(`Booked successfully! ${month} ${i.date}th at ${i.hour}`)
-                        fs.writeFileSync("./assets/users.json", JSON.stringify(data))
+            const obj = fs.readFileSync("./assets/users.json", "utf-8")
+            if (obj) {
+            let temp = []
+            const data = JSON.parse(obj)
+                for (let i of data) {
+                    temp.push(`${i.date}.${i.hour}`)
+                        if (i.user === appointment.user) {
+                            if (!temp.includes(`${i.date}.${time}`)) {
+                            i.hour = time;
+                            ctx.reply(`Booked successfully! ${month} ${i.date}th at ${i.hour}`)
+                            fs.writeFileSync("./assets/users.json", JSON.stringify(data))   
+                        } else {
+                            i.hour = "";
+                            ctx.reply(`This time is taken already. Select other time.`)
+                            fs.writeFileSync("./assets/users.json", JSON.stringify(data))   
+                        }
                     }
-            }
-        } 
+                }
+            } 
+        }
     }
-}

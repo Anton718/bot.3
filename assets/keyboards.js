@@ -27,6 +27,9 @@ const key_days = {
 
 let dayHours = []
 
+const obj = fs.readFileSync("./assets/users.json", "utf-8")
+const data = JSON.stringify(obj)
+
   for (let i = 10; i <= 20; i++) {
     dayHours.push( [{ text: `${i}:00`, callback_data: `${i}:00` }] )
   }
