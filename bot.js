@@ -1,10 +1,6 @@
 require("dotenv").config({ path: "./.env" });
 const { Telegraf } = require("telegraf");
-const { message } = require("telegraf/filters");
 const bot = new Telegraf(process.env.TOKEN);
-const https = require("https")
-const fs = require("fs")
-const sleep = require("sleep")
 const { key_days } = require("./assets/keyboards")
 const  { year, month } = require("./assets/assets")
 const callbacks = require("./controllers/callbacks")
