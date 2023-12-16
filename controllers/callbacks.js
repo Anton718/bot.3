@@ -35,6 +35,7 @@ exports.callbacks = (ctx) => {
             for (let i of data) {
                 if (i.user === appointment.user) {
                     i.date = date;
+                    i.hour = ""
                 } 
                 fs.writeFileSync("./assets/users.json", JSON.stringify(data))
             }
@@ -51,8 +52,10 @@ exports.callbacks = (ctx) => {
             if (obj) {
             let temp = []
             const data = JSON.parse(obj)
+            for (let i of data) {
+                temp.push(`${i.date}.${i.hour}`)
+            }
                 for (let i of data) {
-                    temp.push(`${i.date}.${i.hour}`)
                         if (i.user === appointment.user) {
                             if (!temp.includes(`${i.date}.${time}`)) {
                             i.hour = time;
@@ -60,7 +63,7 @@ exports.callbacks = (ctx) => {
                             fs.writeFileSync("./assets/users.json", JSON.stringify(data))   
                         } else {
                             i.hour = "";
-                            ctx.reply(`This time is taken already. Select other time.`)
+                            ctx.reply(`This time is booked already. Select other time.`)
                             fs.writeFileSync("./assets/users.json", JSON.stringify(data))   
                         }
                     }
