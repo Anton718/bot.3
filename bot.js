@@ -9,7 +9,7 @@ const { key_days } = require("./assets/keyboards")
 const  { year, month } = require("./assets/assets")
 const callbacks = require("./controllers/callbacks")
 
-bot.hears('hi', async (ctx) => {
+bot.start(async (ctx) => {
     ctx.sendMessage(`${month} ${year}`, key_days)
 })
 

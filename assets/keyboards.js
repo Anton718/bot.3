@@ -1,4 +1,5 @@
 const {day_num, monthDays} = require("./assets")
+const fs = require("fs")
 
 let arrMonthDays = []
 let finalMonthDays = []
@@ -19,16 +20,16 @@ let finalMonthDays = []
  
 const key_days = {
   reply_markup: {
-    inline_keyboard:
-    finalMonthDays
+      inline_keyboard:
+          finalMonthDays
    }
 }
 
 let dayHours = []
 
-for (let i = 10; i <= 20; i++) {
-  dayHours.push( [{ text: `${i}:00`, callback_data: `${i}:00` }] )
-}
+  for (let i = 10; i <= 20; i++) {
+    dayHours.push( [{ text: `${i}:00`, callback_data: `${i}:00` }] )
+  }
 
 const key_hours = {
   reply_markup: {
